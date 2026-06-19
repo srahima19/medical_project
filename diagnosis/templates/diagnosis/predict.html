@@ -1,0 +1,25 @@
+{% extends 'diagnosis/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow">
+      <div class="card-body p-4">
+        <h3 class="mb-4">Select Your Symptoms</h3>
+        {% if error %}
+          <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        <form method="post">
+          {% csrf_token %}
+          {% for choice in form.symptoms %}
+            <div class="form-check mb-2">
+              {{ choice.tag }}
+              <label class="form-check-label">{{ choice.choice_label }}</label>
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn btn-success w-100 mt-3">Get Diagnosis</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

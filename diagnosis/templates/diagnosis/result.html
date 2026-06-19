@@ -1,0 +1,24 @@
+{% extends 'diagnosis/base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow border-success">
+      <div class="card-body p-4 text-center">
+        <h2 class="text-success">Diagnosis Result</h2>
+        <hr>
+        <p><strong>Symptoms Entered:</strong><br>{{ diag.symptoms }}</p>
+        <div class="alert alert-warning mt-3">
+          <h4>Predicted Condition</h4>
+          <h2>{{ diag.predicted_disease }}</h2>
+          <p>Confidence: <strong>{{ diag.confidence }}%</strong></p>
+        </div>
+        <p class="text-muted small mt-3">
+          ⚠️ This is not a medical diagnosis. Please consult a doctor.
+        </p>
+        <a href="{% url 'predict' %}" class="btn btn-primary me-2">Check Again</a>
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary">Dashboard</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
